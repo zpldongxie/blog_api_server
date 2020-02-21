@@ -20,6 +20,8 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { CustomMongooseModule } from './custom-mongoose/custom-mongoose.module';
 import { async } from 'rxjs/internal/scheduler/async';
+import { TypeModule } from './type/type.module';
+import { LableModule } from './lable/lable.module';
 
 @Module({
   imports: [
@@ -44,6 +46,8 @@ import { async } from 'rxjs/internal/scheduler/async';
     CatsModule,
     AuthModule,
     UsersModule,
+    TypeModule,
+    LableModule,
   ],
   providers: [
     // {

@@ -2,8 +2,8 @@
  * @description: 全局配置
  * @author: zpl
  * @Date: 2020-01-02 11:46:36
- * @LastEditTime : 2020-01-04 10:44:17
- * @LastEditors  : zpl
+ * @LastEditTime: 2020-02-18 13:27:23
+ * @LastEditors: zpl
  */
 export default () => {
   console.log(`use ${process.env.NODE_ENV} configurations.`);
