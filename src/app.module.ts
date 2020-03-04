@@ -2,8 +2,8 @@
  * @description: 
  * @author: zpl
  * @Date: 2019-12-24 12:05:15
- * @LastEditTime : 2020-01-06 13:46:19
- * @LastEditors  : zpl
+ * @LastEditTime: 2020-03-04 10:54:01
+ * @LastEditors: zpl
  */
 import { Module, NestModule, MiddlewareConsumer, ValidationPipe } from '@nestjs/common';
 import { APP_PIPE, APP_INTERCEPTOR } from '@nestjs/core';
@@ -30,12 +30,12 @@ import { LableModule } from './lable/lable.module';
         NODE_ENV: Joi.string().valid('development', 'production', 'test', 'provision').default('development'),
         PORT: Joi.number().default(3000),
       }),
-      envFilePath: (():string=>{
-        switch(process.env.NODE_ENV){
-          case 'production':
+      envFilePath: ((): string => {
+        switch (process.argv.length) {
+          case 2:
             return `${process.cwd()}/env/production.env`;
-          case 'development':
-          default: 
+          case 3:
+          default:
             return `${process.cwd()}/env/development.env`;
         }
       })(),
