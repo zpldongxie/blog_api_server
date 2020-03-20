@@ -2,7 +2,7 @@
  * @description: 
  * @author: zpl
  * @Date: 2019-12-24 12:05:15
- * @LastEditTime: 2020-03-04 10:54:01
+ * @LastEditTime: 2020-03-18 11:25:05
  * @LastEditors: zpl
  */
 import { Module, NestModule, MiddlewareConsumer, ValidationPipe } from '@nestjs/common';
@@ -22,6 +22,7 @@ import { CustomMongooseModule } from './custom-mongoose/custom-mongoose.module';
 import { async } from 'rxjs/internal/scheduler/async';
 import { TypeModule } from './type/type.module';
 import { LableModule } from './lable/lable.module';
+import { ChannelsModule } from './channels/channels.module';
 
 @Module({
   imports: [
@@ -31,11 +32,14 @@ import { LableModule } from './lable/lable.module';
         PORT: Joi.number().default(3000),
       }),
       envFilePath: ((): string => {
+        console.log('process.argv: ' + process.argv);
         switch (process.argv.length) {
           case 2:
+            console.log('loading production.env ...');
             return `${process.cwd()}/env/production.env`;
           case 3:
           default:
+            console.log('loading development.env ...');
             return `${process.cwd()}/env/development.env`;
         }
       })(),
@@ -48,6 +52,7 @@ import { LableModule } from './lable/lable.module';
     UsersModule,
     TypeModule,
     LableModule,
+    ChannelsModule,
   ],
   providers: [
     // {
